@@ -1,6 +1,6 @@
 ![Crescent Media Logo](https://www.crescentdigitalmedia.solutions/wp-content/uploads/2020/05/logo-v3.png)
 
-# Project 4 Backend Express
+# Project 4 Client React
 
 This app allows users to create profiles for their business on the front end. The app will make API requests to the accompanying database to store and retrieve the data for the Company Profile.
 
