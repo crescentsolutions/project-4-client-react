@@ -1,7 +1,7 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-// Request to Create a chat message
+// CREATE
 export const createProfile = (event) => {
   console.log('event is ', event)
   return axios({

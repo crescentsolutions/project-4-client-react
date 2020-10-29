@@ -9,6 +9,7 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import ProfilePost from '../Profiles/ProfilePost'
+import ProfileIndex from '../Profiles/ProfileIndex'
 
 class App extends Component {
   constructor () {
@@ -56,11 +57,18 @@ class App extends Component {
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
 
-          <Route path='/profiles' render={() => (
-            <ProfilePost msgAlert={this.msgAlert} setUser={this.setUser} />
+          <Route user={user} exact path='/' render={() => (
+            <div>
+              <h1>Home Page</h1>
+            </div>
+          )} />
+          <Route path='/profile-create' render={() => (
+            <ProfilePost msgAlert={this.msgAlert} user={user} />
+          )} />
+          <Route path='/profile-index' render={() => (
+            <ProfileIndex msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
-        <h1>Home Page</h1>
       </Fragment>
     )
   }
