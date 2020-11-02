@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
-// import AuthenticatedRender from '../AuthenticatedRender/AuthenticatedRender'
+import messages from '../AutoDismissAlert/messages'
 
 class ProfileIndex extends React.Component {
   constructor (props) {
@@ -14,6 +14,8 @@ class ProfileIndex extends React.Component {
   }
   componentDidMount () {
     // axios.get(apiUrl + '/profiles')
+    const { msgAlert } = this.props
+
     axios({
       method: 'GET',
       url: apiUrl + '/profiles',
@@ -27,6 +29,11 @@ class ProfileIndex extends React.Component {
           profiles: response.data.profiles
         })
       })
+      .catch(() => msgAlert({
+        heading: 'Failed',
+        message: messages.indexProfileFailure,
+        variant: 'danger'
+      }))
       .catch(console.error)
   }
   render () {

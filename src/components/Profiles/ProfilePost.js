@@ -2,7 +2,7 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
 import axios from 'axios'
-// import messages from '../AutoDismissAlert/messages'
+import messages from '../AutoDismissAlert/messages'
 
 class ProfilePost extends React.Component {
   constructor (props) {
@@ -35,7 +35,7 @@ class ProfilePost extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    // const { msgAlert } = this.props
+    const { msgAlert } = this.props
 
     axios({
       method: 'POST',
@@ -48,11 +48,16 @@ class ProfilePost extends React.Component {
     // .then(res => this.setState({
     //   createdCustomer: this.props.match.params.id
     // }))
-    // .then(() => msgAlert({
-    //   heading: `Creating '${this.state.companyName}'`,
-    //   message: messages.profileCreated,
-    //   variant: 'success'
-    // }))
+      .then(() => msgAlert({
+        heading: 'Created',
+        message: messages.postProfileSuccess,
+        variant: 'success'
+      }))
+      .catch(() => msgAlert({
+        heading: 'Failed',
+        message: messages.postProfileFailure,
+        variant: 'danger'
+      }))
   }
 
   render () {

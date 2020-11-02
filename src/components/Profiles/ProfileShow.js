@@ -2,6 +2,7 @@ import React from 'react'
 import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+import messages from '../AutoDismissAlert/messages'
 
 class ProfileShow extends React.Component {
   constructor (props) {
@@ -13,16 +14,23 @@ class ProfileShow extends React.Component {
   }
 
   componentDidMount () {
+    const { msgAlert } = this.props
     axios(`${apiUrl}/profiles/${this.props.match.params.id}`, {
       headers: {
         'Authorization': `Token token=${this.props.user.token}`
       }
     })
       .then(res => this.setState({ profile: res.data.profile }))
+      .catch(() => msgAlert({
+        heading: 'Failed',
+        message: messages.showProfileFailure,
+        variant: 'danger'
+      }))
       .catch(console.error)
   }
 
   destroy = () => {
+    const { msgAlert } = this.props
     axios({
       url: `${apiUrl}/profiles/${this.props.match.params.id}`,
       method: 'DELETE',
@@ -31,6 +39,16 @@ class ProfileShow extends React.Component {
       }
     })
       .then(() => this.setState({ deleted: true }))
+      .then(() => msgAlert({
+        heading: 'Deleted',
+        message: messages.deleteProfileSuccess,
+        variant: 'success'
+      }))
+      .catch(() => msgAlert({
+        heading: 'Failed',
+        message: messages.deleteProfileFailure,
+        variant: 'danger'
+      }))
       .catch(console.error)
   }
 

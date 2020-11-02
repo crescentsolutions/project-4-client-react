@@ -5,5 +5,15 @@ export default {
   signInFailure: 'Failed to sign in. Check your email and password and try again.',
   signOutSuccess: 'Come back soon!',
   changePasswordSuccess: 'Password changed successfully!',
-  changePasswordFailure: 'Failed to change passwords. Check your old password and try again.'
+  changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
+  postProfileSuccess: 'Customer created!',
+  postProfileFailure: 'Customer could not be created',
+  // indexProfileSuccess: 'Profile created!',
+  indexProfileFailure: 'Could not retreive list',
+  // showProfileSuccess: 'Profile created!',
+  showProfileFailure: 'Could not retrieve customer',
+  deleteProfileSuccess: 'Customer deleted',
+  deleteProfileFailure: 'Could not delete customer',
+  updateProfileSuccess: 'Customer has been updated!',
+  updateProfileFailure: 'Could not update customer'
 }

@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
 import ProfileForm from '../Templates/ProfileForm'
+import messages from '../AutoDismissAlert/messages'
 
 class ProfileEdit extends React.Component {
   constructor (props) {
@@ -34,6 +35,7 @@ class ProfileEdit extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    const { msgAlert } = this.props
 
     axios({
       method: 'PATCH',
@@ -41,14 +43,19 @@ class ProfileEdit extends React.Component {
       headers: {
         'Authorization': `Token token=${this.props.user.token}`
       },
-      // data: {
-      //   profile: {
-      //     companyName: this.state.profile.companyName
-      //   }
-      // }
       data: { profile: this.state.profile }
     })
       .then(() => this.setState({ updated: true }))
+      .then(() => msgAlert({
+        heading: 'Updated',
+        message: messages.updateProfileSuccess,
+        variant: 'success'
+      }))
+      .catch(() => msgAlert({
+        heading: 'Failed',
+        message: messages.updateProfileFailure,
+        variant: 'danger'
+      }))
       .catch(console.error)
   }
 
