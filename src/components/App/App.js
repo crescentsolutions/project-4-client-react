@@ -8,8 +8,10 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
+import Home from '../Home/Home.js'
 import ProfilePost from '../Profiles/ProfilePost'
 import ProfileIndex from '../Profiles/ProfileIndex'
+import ProfileShow from '../Profiles/ProfileShow'
 
 class App extends Component {
   constructor () {
@@ -57,16 +59,15 @@ class App extends Component {
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
 
-          <Route user={user} exact path='/' render={() => (
-            <div>
-              <h1>Home Page</h1>
-            </div>
-          )} />
-          <Route path='/profile-create' render={() => (
+          <Route exact path='/' component={Home} />
+          <AuthenticatedRoute user={user} path='/profile-create' render={() => (
             <ProfilePost msgAlert={this.msgAlert} user={user} />
           )} />
-          <Route path='/profile-index' render={() => (
+          <AuthenticatedRoute user={user} path='/profiles' render={() => (
             <ProfileIndex msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/profiles/:id' render={(props) => (
+            <ProfileShow {...props} msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>

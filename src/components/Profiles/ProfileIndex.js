@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
+// import AuthenticatedRender from '../AuthenticatedRender/AuthenticatedRender'
 
 class ProfileIndex extends React.Component {
   constructor (props) {
@@ -29,27 +30,16 @@ class ProfileIndex extends React.Component {
       .catch(console.error)
   }
   render () {
-    let jsx
-    // while the books are loading
-    if (this.state.isLoaded === false) {
-      jsx = <p>Loading...</p>
-    // if no books
-    } else if (this.state.profiles.length === 0) {
-      jsx = <p>No profiles, please create one.</p>
-    // if there are books
-    } else {
-      jsx = (
-        <ul>
-          {this.state.profiles.map(profile => {
-            return <li key={profile._id}><Link to={`/profiles/${profile._id}`}>{profile.companyName}</Link></li>
-          })}
-        </ul>
-      )
-    }
+    const profiles = this.state.profiles.map(profile => (
+      <li key={profile._id}><Link to={`/profiles/${profile._id}`}>{profile.companyName}</Link></li>
+    ))
+
     return (
       <div>
-        <h2>Profiles</h2>
-        {jsx}
+        <h4>Profiles</h4>
+        <ul>
+          {profiles}
+        </ul>
       </div>
     )
   }
