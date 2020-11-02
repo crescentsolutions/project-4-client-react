@@ -12,6 +12,7 @@ import Home from '../Home/Home.js'
 import ProfilePost from '../Profiles/ProfilePost'
 import ProfileIndex from '../Profiles/ProfileIndex'
 import ProfileShow from '../Profiles/ProfileShow'
+import ProfileEdit from '../Profiles/ProfileUpdate'
 
 class App extends Component {
   constructor () {
@@ -68,6 +69,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/profiles/:id' render={(props) => (
             <ProfileShow {...props} msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/profiles/:id/edit' render={(props) => (
+            <ProfileEdit {...props} msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>

@@ -55,7 +55,7 @@ class ProfileShow extends React.Component {
         <Link to={`/profiles/${this.props.match.params.id}/edit`}>
           <button>Edit</button>
         </Link>
-        <Link to="/profiles">Back to all books</Link>
+        <Link to="/profiles">Back to all profiles</Link>
       </div>
     )
   }
