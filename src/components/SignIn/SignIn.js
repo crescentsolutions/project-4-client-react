@@ -45,12 +45,15 @@ class SignIn extends Component {
   }
 
   render () {
+    // if (profile.companyName === this.state.profile.companyName) {
+    //   return <Redirect to='/profiles' />
+    // }
     const { email, password } = this.state
 
     return (
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h3>Sign In</h3>
+          <h3>Welcome to your Dashboard</h3>
           <Form onSubmit={this.onSignIn}>
             <Form.Group controlId="email">
               <Form.Label>Email address</Form.Label>

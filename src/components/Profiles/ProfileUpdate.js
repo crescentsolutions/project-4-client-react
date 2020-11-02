@@ -1,53 +1,51 @@
-import React, { Component } from 'react'
-// import { Redirect } from 'react-router-dom'
+import React from 'react'
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 import apiUrl from '../../apiConfig'
 import ProfileForm from '../Templates/ProfileForm'
 
-class ProfileEdit extends Component {
+class ProfileEdit extends React.Component {
   constructor (props) {
     super(props)
 
     this.state = {
       profile: {
-        companyName: ''
+        companyName: '',
+        firstName: '',
+        lastName: '',
+        telephone: '',
+        webHost: '',
+        domainName: ''
       },
       updated: false
     }
   }
 
-  componentDidMount () {
-    axios(`${apiUrl}/profiles/${this.props.match.params.id}`, {
-      headers: {
-        'Authorization': `Token token=${this.props.user.token}`
-      }
-    })
-      .then(res => this.setState({ profile: res.data.profile }))
-      .catch(console.error)
-  }
-
-  handleChange = event => {
+  handleChange = (event) => {
     event.persist()
 
-    this.setState(prevState => {
+    this.setState(() => {
       const updatedField = { [event.target.name]: event.target.value }
-
-      const editedProfile = Object.assign({}, prevState.profile, updatedField)
-
+      const editedProfile = Object.assign({}, this.state.profile, updatedField)
       return { profile: editedProfile }
     })
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault()
 
     axios({
-      url: `${apiUrl}/profiles/${this.props.match.params.id}`,
       method: 'PATCH',
+      url: `${apiUrl}/profiles/${this.props.match.params.id}`,
       headers: {
         'Authorization': `Token token=${this.props.user.token}`
       },
+      // data: {
+      //   profile: {
+      //     companyName: this.state.profile.companyName
+      //   }
+      // }
       data: { profile: this.state.profile }
     })
       .then(() => this.setState({ updated: true }))
@@ -55,13 +53,13 @@ class ProfileEdit extends Component {
   }
 
   render () {
-    // const { profile, updated } = this.state
-    const { profile } = this.state
+    const { profile, updated } = this.state
+    // const { profile } = this.state
     const { handleChange, handleSubmit } = this
 
-    // if (updated) {
-    //   return <Redirect to={`/profiles/${this.props.match.params.id}`} />
-    // }
+    if (updated) {
+      return <Redirect to={`/profiles/${this.props.match.params.id}`} />
+    }
 
     return (
       <ProfileForm

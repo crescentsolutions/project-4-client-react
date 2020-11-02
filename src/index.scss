@@ -1,1 +1,29 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+body {
+  font-family: 'Fredoka One';
+  background-color: #dedede;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+h1, h2, h3, h4 {
+  color: #000000;
+}
+
+p {
+  color: #2E363B;
+}
+
+.navbar {
+  background-color: tomato;
+}
+
+main {
+  margin-top: 50px;
+}
+
+form label {
+  color: #2E363B;
+}

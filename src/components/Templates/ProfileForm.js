@@ -10,6 +10,41 @@ const ProfileForm = ({ profile, handleSubmit, handleChange, cancelPath }) => (
       name="companyName"
       onChange={handleChange}
     />
+    <label>First Name</label>
+    <input
+      placeholder="First Name"
+      value={profile.firstName}
+      name="firstName"
+      onChange={handleChange}
+    />
+    <label>Last Name</label>
+    <input
+      placeholder="Last Name"
+      value={profile.lastName}
+      name="lastName"
+      onChange={handleChange}
+    />
+    <label>Telephone</label>
+    <input
+      placeholder="Telephone"
+      value={profile.telephone}
+      name="telephone"
+      onChange={handleChange}
+    />
+    <label>Web Host</label>
+    <input
+      placeholder="Web Host"
+      value={profile.webHost}
+      name="webHost"
+      onChange={handleChange}
+    />
+    <label>Domain Name</label>
+    <input
+      placeholder="Domain Name"
+      value={profile.domainName}
+      name="domainName"
+      onChange={handleChange}
+    />
 
     <button type="submit">Submit</button>
     <Link to={cancelPath}>

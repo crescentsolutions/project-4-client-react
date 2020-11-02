@@ -36,7 +36,7 @@ class ProfileIndex extends React.Component {
 
     return (
       <div>
-        <h4>Profiles</h4>
+        <h4>Welcome to your Dashboard</h4>
         <ul>
           {profiles}
         </ul>

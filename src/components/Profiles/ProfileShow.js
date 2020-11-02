@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
@@ -42,15 +42,19 @@ class ProfileShow extends React.Component {
     }
 
     if (deleted) {
-      // return <Redirect to={
-      //   { pathname: '/', state: { msg: 'Book succesfully deleted!' } }
-      // } />
-      return <h2>DELETED</h2>
+      return <Redirect to={
+        { pathname: '/', state: { msg: 'Client succesfully deleted' } }
+      } />
+      // return <h2>DELETED</h2>
     }
 
     return (
       <div>
         <h4>{profile.companyName}</h4>
+        <p><strong>Name: </strong> {profile.firstName + ' ' + profile.lastName}</p>
+        <p><strong>Phone: </strong>{profile.telephone}</p>
+        <p><strong>Web Host: </strong>{profile.webHost}</p>
+        <p><strong>Domain: </strong>{profile.domainName}</p>
         <button onClick={this.destroy}>Delete Profile</button>
         <Link to={`/profiles/${this.props.match.params.id}/edit`}>
           <button>Edit</button>
