@@ -24,5 +24,3 @@ This app allows users to create profiles for their business on the front end. Th
 ## Process
 
 My main objective is to create a clean look for the Customer Profiles to make the data accessible and easy to read. Users should be able to create an account, log in and view the dashboard. The dashboard will either display their existing profile or give them an alert to create one.
-
-Process of updating files:
